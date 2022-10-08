@@ -1,0 +1,56 @@
+Module not found: Can't resolve 'react-router-dom'
+
+vulnerable dependencies
+
+This worked for me not sure it will work for you, but here goes:
+
+New to react, I wasn't sure why or what these vulnerable dependencies issues were, 
+but it sounding like trouble. 3 days I was looking for answers and all the experts
+and coder had the same fix:
+
+npm audit fix --force
+https://docs.npmjs.com/cli/v8/commands/npm-audit
+
+It didn't work for me, in fact I got more vulnerabilities errors hundreds.
+What was 6 turned to 65 to 105. It was crazy!
+
+With these three sites I put the following together:
+Thinking these are just files and folders. If the folder and files are missing just add it
+
+1. delete your node_modules and package-lock.json (not package.json) files.
+These didn't work for me:
+
+# 👇️ delete node_modules and package-lock.json
+rm -rf node_modules
+rm -f package-lock.json
+
+2. clear cache:
+# 👇️ clean npm cache
+npm cache clean --force
+
+I WENT INTO THE PROJECT FOLDER AND DELETED THEM THERE!
+
+3. open your package.json file
+{
+  // ... rest
+  "dependencies": {
+    "react-router-dom": "^6.3.0",
+  },
+  "devDependencies": {
+    // 👇️ only if you use TypeScript
+    "@types/react-router-dom": "^5.3.3"
+  }
+}
+
+https://bobbyhadz.com/blog/react-module-not-found-cant-resolve-react-router-dom
+
+4. install in project directory c:\myproject shell/console window: 
+npm install
+
+5. in shell/console: npm install react-router-dom@6
+
+npm install react-router-dom@latest#
+https://www.microverse.org/blog/react-router-guide-migrating-from-react-router-v5-to-react-router-v6
+
+
+after these steps no more vulnerabilities 
